@@ -1,27 +1,72 @@
 .App {
   background-color: lightgray;
-  min-width: 100vw;
+  min-width: 98vw;
   min-height: 100vh;
 }
-.searchbar {
+.mainContent{
   display: flex;
+  flex-wrap: wrap;
   justify-content: center;
-  padding: 20px 0px;
+  position: relative;
 }
-.inputBox {
-  padding: 10px;
-  border-bottom: 1px solid ;
+.display-flex{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
-/* button CSS*/
-.btn {
-  padding: 10px 25px;
-  background-color: lightgray;
+.mainContent > div {
+  margin: 20px 15px;
+}
+
+
+.imageCSS{
+  width: 200px;
+  height: 300px;
   -webkit-transition: all 0.8s ease;
   -moz-transition: all 0.8s ease;
   transition: all 0.8s ease;
-  margin-left: 10px;
+}
+.imgDes {
+  display: none;
+  justify-content: space-evenly;
+  opacity: 0.7;
+  color: wheat;
+  font-size: 18px;
+
+  -webkit-transition: all 0.8s ease;
+  -moz-transition: all 0.8s ease;
+  transition: all 0.8s ease;
+}
+
+/*hover css to enlighten the focused content */
+/* .poster:hover {
+  box-shadow: 20px 20px 10px grey;
+  background-color: black;
+  z-index: 1;
 
 }
-.btn:hover {
-  background-color: #6495ed;
+.poster:hover .imageCSS {
+  width: 250px;
+  height: 350px;
 }
+.poster:hover .imgDes {
+  display: flex;
+  
+} */
+
+/* on click the image */
+.posterHover {
+  box-shadow: 20px 20px 10px black;
+  background-color: black;
+  left: 0px;
+  z-index: 1;
+  position: absolute;
+ 
+  width: 30%;
+  height: 96% ;
+}
+.imgDesHover {
+  display: flex;
+
+}
+
