@@ -1,0 +1,9 @@
+body {
+  margin: 0px;
+}
+input {
+  border: none;
+  outline: none;
+  font-size: 20px;
+  background-color: lightgray;
+}

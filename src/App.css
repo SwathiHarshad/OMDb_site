@@ -1,0 +1,27 @@
+.App {
+  background-color: lightgray;
+  min-width: 100vw;
+  min-height: 100vh;
+}
+.searchbar {
+  display: flex;
+  justify-content: center;
+  padding: 20px 0px;
+}
+.inputBox {
+  padding: 10px;
+  border-bottom: 1px solid ;
+}
+/* button CSS*/
+.btn {
+  padding: 10px 25px;
+  background-color: lightgray;
+  -webkit-transition: all 0.8s ease;
+  -moz-transition: all 0.8s ease;
+  transition: all 0.8s ease;
+  margin-left: 10px;
+
+}
+.btn:hover {
+  background-color: #6495ed;
+}
