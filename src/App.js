@@ -1,19 +1,20 @@
 import React,{useEffect, useState} from 'react'
 import './App.css'
-import SearchBar from './SearchBar/SearchBar'
+import SearchBar from './searchBarAndSorting/SearchBar'
 import { MovieList } from './mainContent/MovieList'
 import { MovieDetail } from './mainContent/MovieDetail/MovieDetail'
+import { ErrorHandling } from './mainContent/MovieDetail/ErrorHandling/ErrorHandling'
 
 function App () {
   const [Data , responseData] = useState([])
   const [Detail, setDetail ] = useState('')
   const [Error, errorHandling] = useState('')
-  const [isLoading, SetLoading] = useState(true)
-  const [isPagination, setPagination] = useState(true)
+  const [isLoading, SetLoading] = useState(false)
+  const [isPagination, setPagination] = useState(false)
   const [toShow, setPopup] = useState('')
-  const [searchData, setSearchData] = useState('joker')
+  const [searchData, setSearchData] = useState('')
   const [pageCount, setCount] = useState(1)
-  const [url, setUrl] = useState('http://www.omdbapi.com/?apikey=a184ae48&s='+searchData+'&page='+pageCount+'')
+  const [movieId, setMovieId] = useState('')
 
 /** For pagination */
   useEffect(()=>{
@@ -21,60 +22,93 @@ function App () {
       return () => window.removeEventListener('scroll', handleScroll);
   },[])
 /* to hit the API for Pagination call */
-function handleScroll(){
-  if (window.innerHeight + document.documentElement.scrollTop > document.documentElement.offsetHeight-100){
-    setPagination(true)
-    APICall()
+  function handleScroll(){
+    if (window.innerHeight + document.documentElement.scrollTop >= document.documentElement.offsetHeight-10 && !isLoading ){
+      setPagination(true)
+      setCount(pageCount=> parseInt(pageCount)+1)
+    }
   }
-}
-/* Fetch Call */
+/******  Fetch Call *******/
   useEffect(() => {
-    const getData = async()=>{
-      await fetch(url)
-      .then(res => res.json())
-      .then((success) => { 
-        if(isPagination){
-          let data = [...Data, ...success.Search]
-          console.log(data)
-          responseData(data)
-          setPagination(false)
-        }else{
-          setDetail(success)
-        }
-        console.log(success)
-      } )
-      .catch((error)=>{ errorHandling(error)});
-      SetLoading(false)
-    } 
-    getData()
-  },[url])
+    if(searchData !== ''){
+      SetLoading(isLoading=> true)
+      let baseURL = 'http://www.omdbapi.com/?apikey=a184ae48'
+      let url = ''
+      errorHandling('')
+      if(toShow === ''){ // For pagination and search
+        url = baseURL + '&s=' + searchData + '&page=' + pageCount
+      } else if(toShow === 'show'){ // To get details for a particular movie
+        url = baseURL + '&i=' + movieId
+      }
+      if(url !== ''){
+        const getData = async()=>{
+          await fetch(url)
+          .then(res => res.json())
+          .then((response) => { 
+            if(response.Error === undefined){
+              if(isPagination && typeof(response.Search) === 'object'){
+                let data = [...Data, ...response.Search]
+                responseData(data)
+                setPagination(false)
+              }else if(toShow === 'show'){
+                setDetail(response)
+              } else {
+                responseData(response.Search)
+              }
+            } else{
+              responseData()
+              errorHandling(response.Error)
+              console.log(response.Error)
+            }
+          } )
+          SetLoading(false)
+        } 
+        getData()
+      }
+    }
+    
+  },[searchData, pageCount, movieId])
 
-/* To update the url when the separate movie is clicked to hit the API */
+/* to hit the API for search and to get details for a movie*/
   function APICall(e) {
     if(e !== undefined && e.currentTarget !== undefined){
       let value = e.currentTarget.getAttribute('value')
-      setPagination(true)
       setSearchData(value)
-      setUrl(url.split('&')[0] + '&s=' + value)
-
+      setPopup('')
+      document.body.style.overflow = 'unset';
+      setCount(pageCount=> 1)
     }else if(e !== undefined && e.getAttribute !== undefined){
-      setUrl(url.split('&')[0] + '&i=' + e.getAttribute('value'))
+      setMovieId(e.getAttribute('value'))
       setPopup('show')
-
-    } else if(isPagination){
-      setCount(pageCount+1)
-      let count = pageCount + 1
-      setUrl(url.split('&')[0]+ '&s=' + searchData + '&page=' +count)
+      document.body.style.overflow = 'hidden';
     }
+  }
 /* To close the movie detail popup */
-  }
   function toClosePopup() {
-    setPopup()
-  }
+    setPopup('')
+    document.body.style.overflow = 'unset';
 
+  }
+/* To sort the data */
+  function toSort(key,order){
+    let arraySort = Data
+    if(key === 'Year') {
+      if(order === 'Ascending')
+        arraySort = [...Data].sort((a,b) => a.Year > b.Year ? 1 : -1)
+      else
+        arraySort = [...Data].sort((a,b) => a.Year < b.Year ? 1 : -1)
+    }
+    else {
+      if(order === 'Ascending')
+        arraySort = [...Data].sort((a,b) => (a.Title > b.Title) ? 1 : ((b.Title > a.Title) ? -1 : 0))
+      else
+        arraySort = [...Data].sort((a,b) => (a.Title < b.Title) ? 1 : ((b.Title < a.Title) ? -1 : 0))
+    }
+    responseData(arraySort)
+  }
   return (
     <div className='App'>
-      <SearchBar APICall={APICall}></SearchBar>
+      <SearchBar APICall={APICall} toSort={toSort}></SearchBar>
       <div className='mainContent'>
       {
         (Data)? (
@@ -82,7 +116,7 @@ function handleScroll(){
             <MovieList index={index} key={index} searchItem={searchItem} APICall={APICall} Details={Detail}></MovieList>
           ))
         )
-        : (<div>Data not available</div>)
+        : null
       }
       </div>
       <div className={'popup '+toShow}>
@@ -90,6 +124,10 @@ function handleScroll(){
             <MovieDetail Detail={Detail} toClosePopup={toClosePopup} toShow={toShow}></MovieDetail>
           ) : null
         }
+      </div>
+      <div className={` hide  ${ isLoading ? 'display-flex' : ''} `}><div>Loading....</div><div className='Icon loadingIcon'></div></div>
+      <div className={`${ (Error === '')? 'hide': ''}`}>
+        <ErrorHandling Error={Error}></ErrorHandling>
       </div>
     </div>
   )

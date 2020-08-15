@@ -1,5 +1,6 @@
 import React, { useState, useRef } from 'react'
 import './MovieList.css'
+import { ErrorHandling } from './MovieDetail/ErrorHandling/ErrorHandling'
 
 export function MovieList ({index, searchItem, APICall}) {
   const [posterOnClick, setPosterCSS] = useState('')
@@ -7,9 +8,7 @@ export function MovieList ({index, searchItem, APICall}) {
   const valueElement = useRef()
 
   function toLoadDetails(e) {
-    // setPosterCSS('posterHover')
-    // setDescribe('imgDesHover')
-    APICall(valueElement.current)
+      APICall(valueElement.current)
   }
   
   return(
@@ -20,13 +19,12 @@ export function MovieList ({index, searchItem, APICall}) {
          ref={valueElement}>
       {(searchItem.Poster !== 'N/A' && searchItem.Poster !== undefined)?
         <img src={searchItem.Poster} className='imageCSS' alt={searchItem.Title}></img>
-        
-        : <div className='imageCSS'>{searchItem.Title}</div>
-        
+        : <ErrorHandling Error='Poster not available'></ErrorHandling>
       }
       <div className={'display-flex imgDes '+describeView}>
-        <div>Movie : {searchItem.Title}</div>
-        <div>Year : {searchItem.Year}</div>
+        <div>{searchItem.Title}</div>
+        <div><span>(</span>{searchItem.Year}<span>)</span></div>
+        <div className='Icon navigationIcon'></div>
       </div>
     </div>
   )

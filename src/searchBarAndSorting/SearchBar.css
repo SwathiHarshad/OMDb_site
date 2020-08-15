@@ -1,0 +1,60 @@
+.logo {
+  /* width: 98%; */
+  width: 10%;
+  height: 38px;
+  position: fixed;
+  top: 0px;
+  left: 0px;
+  padding: 18px 15px;
+}
+.logo > div {
+  background: url(/static/media/ediflo.9803a683.png);
+  background-repeat: no-repeat;
+  background-size: contain;
+  width: 100px;
+  height: 100px;
+}
+.searchBar {
+  display: flex;
+  justify-content: center;
+  padding: 20px 0px;
+}
+.inputBox {
+  padding: 10px 0px 0px 0px;
+  border-bottom: 1px solid ;
+}
+/* button CSS*/
+.btn {
+  padding: 7px 25px 7px 25px;
+  cursor: context-menu;
+  margin-left: 10px;
+  border-radius: 10px;
+  background-color: #0B25E5;
+  color: #FFFFFF
+}
+.dropDownDiv {
+  position: relative;
+}
+.dropDownDiv .display-flex {
+  position: absolute;
+  width: 170px;
+  align-items: normal;
+  background-color: #F2F2F2 ;
+  cursor: context-menu;
+  border-radius: 10px;
+}
+.dropDownDiv .display-flex > div{
+  padding: 10px 0px;
+}
+.dropDownDiv .display-flex > div:first-child{
+  border-bottom: 1px solid #dad9d9;
+
+}
+.dropDownDiv .options > div:hover {
+  background-color: #dad9d9 ;
+  padding: 5px;
+  border-radius: 10px;
+}
+.dropDownDiv .options > span {
+  color: #0B25E5
+}

@@ -4,6 +4,7 @@
   height: 100vh;
   display: none;
   transition: width 2s;
+  margin-left: 8%;
 }
 .displayBlock{
   width: 100vw;
@@ -20,7 +21,7 @@
 }
 /* Content CSS */
 .Details{
-  width: 75%;
+  width: 72%;
 }
 .Details > div {
   display: flex;
@@ -28,8 +29,10 @@
 }
 .label {
   width: 12%;
-  font-weight: bolder;
 }
 .name {
-  width: 75%;
+  width: 86%;
+}
+#movieDetail .display-flex{
+  color: black;
 }

@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import './MovieDetail.css'
+import { ErrorHandling } from './ErrorHandling/ErrorHandling'
 
 export function MovieDetail({Detail, toClosePopup, toShow}){
   const [displayBlock, setDisplay] = useState('')
@@ -13,10 +14,12 @@ export function MovieDetail({Detail, toClosePopup, toShow}){
   return(
     <div id='movieDetail' className={'mainContent '+displayBlock}>
       <span className='closeBtn' onClick={toClosePopup}>+</span>
-      <div className='Poster'>
+      {(Detail.Poster !== 'N/A' && Detail.Poster !== undefined)?
         <img src={Detail.Poster} className='imageCSS' alt={Detail.Title}></img>
         
-      </div>
+        : <ErrorHandling Error='Poster not Available'></ErrorHandling>
+        
+      }
       <div className='Details'>
         <div>
           <div className='label'>Title: </div>

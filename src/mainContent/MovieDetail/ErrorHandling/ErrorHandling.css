@@ -1,0 +1,12 @@
+.errorIcon{
+  background-image: url('../../../asset/sentiment_very_dissatisfied-24px.svg');
+  animation: errorIcon infinite 2s alternate;
+}
+@keyframes errorIcon{
+  0% {
+    transform: rotate(90deg);
+  }
+  100% {
+    transform: rotate(-90deg);
+  }
+}

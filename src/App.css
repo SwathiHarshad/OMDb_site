@@ -1,25 +1,31 @@
 .App {
-  background-color: #4cb7a5 ;
+  background-color: #585D71 ;
   min-width: 98vw;
   min-height: 100vh;
   position: relative;
-
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 input {
   border: none;
   outline: none;
   font-size: 20px;
-  background-color: #4cb7a5;
+  background-color: #585D71;
 }
 .mainContent{
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
+  display: grid;
+  grid-template-columns: repeat(5, 231px);
+  grid-gap: 1rem;
+
 }
 .display-flex{
   display: flex;
   flex-direction: column;
-  align-items: space-evenly;
+  align-items: center;
+  justify-content: center;
+
 }
 .mainContent > div {
   margin: 20px 15px;
@@ -27,14 +33,37 @@ input {
 .popup{
   position: fixed;
   top: 0px;
+  left: 0px;
   width: 0vw;
   height: 100vh;
   background:rgba(0,0,0, 0.7);
-  color: wheat;
   transition: width .5s;
+  color: #FFFFFF;
 }
 .show {
   width: 100vw;
 }
-
+.hide{
+  display: none;
+}
+.loading > div{
+  font-size: 22pt;
+}
+.Icon{
+  width: 80px;
+  height: 90px;
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+.loadingIcon{
+  animation: hourGlass infinite 1s;
+}
+@keyframes hourGlass{
+  0%{
+    background-image:url('./asset/hourglass_bottom-24px.svg');
+  }
+  100%{
+    background-image: url('./asset/hourglass_top-24px.svg');
+  }
+}
 
