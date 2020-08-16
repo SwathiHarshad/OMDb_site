@@ -13,15 +13,16 @@
 /* Close Icon */
 .closeBtn{
   position: absolute;
-  top: 0px;
+  top: 25px;
+  right: 11%;
   font-size: 45px;
-  right: 30px;
   transform: rotate(45deg);
   cursor: pointer;
 }
 /* Content CSS */
 .Details{
   width: 72%;
+  margin-left: 4%;
 }
 .Details > div {
   display: flex;

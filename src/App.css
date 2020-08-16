@@ -3,6 +3,8 @@
   min-width: 98vw;
   min-height: 100vh;
   position: relative;
+}
+.display-flex-center{
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -11,8 +13,9 @@
 input {
   border: none;
   outline: none;
-  font-size: 20px;
+  font-size: 14pt;
   background-color: #585D71;
+  color: #FFFFFF;
 }
 .mainContent{
   display: grid;
@@ -25,7 +28,6 @@ input {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-
 }
 .mainContent > div {
   margin: 20px 15px;
@@ -43,6 +45,10 @@ input {
 .show {
   width: 100vw;
 }
+.mainContent > div {
+  margin: 20px 15px;
+}
+
 .hide{
   display: none;
 }

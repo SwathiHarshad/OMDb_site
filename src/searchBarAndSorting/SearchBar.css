@@ -8,10 +8,10 @@
   padding: 18px 15px;
 }
 .logo > div {
-  background: url(/static/media/ediflo.9803a683.png);
+  background-image: url('../asset/ediflo.png');
   background-repeat: no-repeat;
   background-size: contain;
-  width: 100px;
+  width: 160px;
   height: 100px;
 }
 .searchBar {
