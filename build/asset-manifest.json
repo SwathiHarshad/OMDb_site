@@ -1,0 +1,26 @@
+{
+  "files": {
+    "main.css": "/static/css/main.274baa5b.chunk.css",
+    "main.js": "/static/js/main.24361f59.chunk.js",
+    "main.js.map": "/static/js/main.24361f59.chunk.js.map",
+    "runtime-main.js": "/static/js/runtime-main.e02b7939.js",
+    "runtime-main.js.map": "/static/js/runtime-main.e02b7939.js.map",
+    "static/js/2.89de3074.chunk.js": "/static/js/2.89de3074.chunk.js",
+    "static/js/2.89de3074.chunk.js.map": "/static/js/2.89de3074.chunk.js.map",
+    "index.html": "/index.html",
+    "precache-manifest.7f21798819bf568b86865730a7014274.js": "/precache-manifest.7f21798819bf568b86865730a7014274.js",
+    "service-worker.js": "/service-worker.js",
+    "static/css/main.274baa5b.chunk.css.map": "/static/css/main.274baa5b.chunk.css.map",
+    "static/js/2.89de3074.chunk.js.LICENSE.txt": "/static/js/2.89de3074.chunk.js.LICENSE.txt",
+    "static/media/MovieList.css": "/static/media/arrow_circle_down-24px.64618baf.svg",
+    "static/media/SearchBar.css": "/static/media/filter_list-24px.db203fa0.svg",
+    "static/media/App.css": "/static/media/hourglass_top-24px.f05a6e4c.svg",
+    "static/media/ErrorHandling.css": "/static/media/sentiment_very_dissatisfied-24px.df683721.svg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.e02b7939.js",
+    "static/js/2.89de3074.chunk.js",
+    "static/css/main.274baa5b.chunk.css",
+    "static/js/main.24361f59.chunk.js"
+  ]
+}
