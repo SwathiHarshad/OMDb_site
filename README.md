@@ -39,4 +39,4 @@ yarn global add serve
 serve -s build
 ```
 
-Open [http://localhost:5000](http://localhost:3000) to view the website in the browser.
+Open [http://localhost:5000](http://localhost:5000) to view the website in the browser.
