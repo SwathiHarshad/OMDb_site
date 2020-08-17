@@ -6,14 +6,14 @@ export function MovieList ({Data, APICall}) {
   const valueElement = useRef()
 
   function toLoadDetails(e) {
-      APICall(valueElement.current)
+      APICall(e)
   }
   
   return(
     (Data)? (
       Data.map((searchItem, index)=>(
-        <div className='poster display-flex'   key={index}   value={searchItem.imdbID} 
-         onClick={toLoadDetails}
+        <div className='poster display-flex'   key={index}
+         onClick={()=>toLoadDetails(searchItem.imdbID)}
          ref={valueElement}>
 
           {

@@ -1,11 +1,15 @@
 import { useState, useEffect } from "react";
 
-export function useGET (url,isPagination, isDetail, pageCount) {
+export function useGET (url,isPagination, isDetail, pageCount, movieId) {
   
   const [movieList, setList] = useState('')
   const [movieDetail, setDetail] = useState('')
   const [error, errorHandling] = useState('')
 
+  useEffect(()=>{
+    setDetail('')
+  },[movieId])
+  
   useEffect(() => {
     if(url !== ''){
       const getData = async()=>{
@@ -27,6 +31,9 @@ export function useGET (url,isPagination, isDetail, pageCount) {
       }else if(isDetail === true){
         setDetail(response)
       } else {
+        if(pageCount === 1){
+          setList('')
+        }  
         setList(response.Search)
       }
     } else{
@@ -35,6 +42,7 @@ export function useGET (url,isPagination, isDetail, pageCount) {
         setList('')
       }
     }
+    console.log('useGET : ',pageCount, movieList)
   }
   
   

@@ -17,10 +17,11 @@ function App () {
   const [movieListData, setMovieList] = useState('')
 
   /****** Custom hook to hit the API *******/
-  const [movieList, movieDetail, error] = useGET(url, isPagination, isDetail, pageCount)
+  const [movieList, movieDetail, error] = useGET(url, isPagination, isDetail, pageCount, movieId)
 
   useEffect(()=>{
     setMovieList(movieList)
+    console.log('App.js: ', movieList)
   },[movieList])
 
   /** For pagination */
@@ -58,11 +59,12 @@ function App () {
   function APICall(e) {
     if(e !== undefined && e.currentTarget !== undefined){
       let value = e.currentTarget.getAttribute('value')
+      setPagination(false)
       setSearchData(value)
       document.body.style.overflow = 'unset';
       setCount(pageCount=> 1)
-    }else if(e !== undefined && e.getAttribute !== undefined){
-      setMovieId(e.getAttribute('value'))
+    }else if(typeof(e) === 'string'){
+      setMovieId(e)
       setPopup(true)
       document.body.style.overflow = 'hidden';
     }

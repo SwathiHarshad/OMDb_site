@@ -32,6 +32,9 @@
   background-color: #0B25E5;
   color: #FFFFFF
 }
+.btn:active, .sortIcon:active{
+  transform: translateY(4px);
+}
 .dropDownDiv {
   position: relative;
 }
@@ -43,18 +46,27 @@
   cursor: context-menu;
   border-radius: 10px;
 }
-.dropDownDiv .display-flex > div{
-  padding: 10px 0px;
-}
-.dropDownDiv .display-flex > div:first-child{
+.options > div:first-child{
   border-bottom: 1px solid #dad9d9;
 
 }
-.dropDownDiv .options > div:hover {
+.options > div:hover {
   background-color: #dad9d9 ;
-  padding: 5px;
   border-radius: 10px;
 }
 .dropDownDiv .options > span {
   color: #0B25E5
+}
+.options > div {
+  text-align: right;
+  padding: 5px;
+}
+.sortIcon{
+  background-image: url('../asset/filter_list-24px.svg');
+  width: 44px;
+  height: 36px;
+  margin-left: 10px;
+}
+.Ascending {
+  transform: rotate(180deg);
 }

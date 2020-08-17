@@ -5,7 +5,34 @@ function SearchBar({APICall, toSort}){
   const [value, setValue] = useState('')
   const node = useRef()
   const [toShow, setShow] = useState(false)
+  const [sort, setSort] = useState('Sort')
+  const [sortingBy, setSortingBy] = useState('')
+  const [sortOrder, setOrder] = useState(true)
 
+  function ArraySort(sortBy,event){
+    let order = ''
+    if(sortBy === ''){
+      sortBy = sortingBy
+      if(sortOrder){
+        order = 'Ascending'
+        setOrder(sortOrder=> false)
+        
+      }else {
+        order = 'Descending'
+        setOrder(sortOrder=> true)
+
+      }
+      
+      toSort(sortBy,order)
+    } else{
+      setSortingBy(sortBy)
+      toSort(sortBy,'Descending')
+      setOrder(sortOrder=> true)
+      setSort(event.currentTarget.innerText)
+      setShow(false)
+    }
+
+  }
   useEffect(() => {
     document.addEventListener("mousedown", handleClick);
     return () => {
@@ -32,19 +59,16 @@ function SearchBar({APICall, toSort}){
       </div>
       <div className='btn' onClick={APICall} value={value}>Search</div>
       <div ref={node} className='dropDownDiv'>
-        <div className='btn'>Sort</div>
+        <div className='btn'>{sort}</div>
         <div className={` ${toShow? 'display-flex':'hide' } `}>
           <div className='options' >
-            <span>Sort by Title </span>
-            <div onClick={()=>toSort('Title','Ascending')}>Ascending</div>
-            <div onClick={()=>toSort('Title','Descending')}>Descending</div>
-          </div>
-          <div className='options'>
-            <span>Sort by Year</span>
-            <div onClick={()=>toSort('Year','Ascending')}>Ascending</div>
-            <div onClick={()=>toSort('Year','Descending')}>Descending</div>
+            <div onClick={(event)=>ArraySort('Title',event)}>Title</div>
+            <div onClick={(event)=>ArraySort('Year',event)}>Release</div>
           </div>
         </div>
+      </div>
+      <div>
+        <div className={`Icon sortIcon ${sortOrder ? '': 'Ascending'} ${(sortingBy === '')? 'hide': ''}`} onClick={()=>ArraySort('')}></div>
       </div>
     </div>
   )
