@@ -4,15 +4,21 @@
   height: 38px;
   position: fixed;
   top: 0px;
-  left: 0px;
+  right: 0px;
   padding: 18px 15px;
 }
 .logo > div {
-  background-image: url('../asset/ediflo.png');
+  background-image: url('../asset/swaLogo.png');
   background-repeat: no-repeat;
   background-size: contain;
   width: 160px;
   height: 100px;
+  text-align: end;
+}
+.logo > span {
+  font-family: "Sofia"!important;
+  font-size: 22pt;
+  font-style: normal;
 }
 .searchBar {
   display: flex;

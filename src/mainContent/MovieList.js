@@ -1,21 +1,12 @@
-import React, { useState, useRef } from 'react'
+import React from 'react'
 import './MovieList.css'
 import { ErrorHandling } from './MovieDetail/ErrorHandling/ErrorHandling'
 
 export function MovieList ({Data, APICall}) {
-  const valueElement = useRef()
-
-  function toLoadDetails(e) {
-      APICall(e)
-  }
-  
   return(
     (Data)? (
       Data.map((searchItem, index)=>(
-        <div className='poster display-flex'   key={index}
-         onClick={()=>toLoadDetails(searchItem.imdbID)}
-         ref={valueElement}>
-
+        <div className='poster display-flex'   key={searchItem.imdbID}   onClick={()=>APICall(searchItem.imdbID,"movieId")}>
           {
           (searchItem.Poster !== 'N/A' && searchItem.Poster !== undefined)?
             <img src={searchItem.Poster} className='imageCSS' alt={searchItem.Title}></img>
@@ -30,10 +21,5 @@ export function MovieList ({Data, APICall}) {
       ))
     )
     : null
-
-
-
-
-    
   )
 }

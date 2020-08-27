@@ -12,18 +12,10 @@ function SearchBar({APICall, toSort}){
   function ArraySort(sortBy,event){
     let order = ''
     if(sortBy === ''){
-      sortBy = sortingBy
-      if(sortOrder){
-        order = 'Ascending'
-        setOrder(sortOrder=> false)
-        
-      }else {
-        order = 'Descending'
-        setOrder(sortOrder=> true)
-
-      }
+      order = (sortOrder)?'Ascending': 'Descending'
+      setOrder(sortOrder=> !sortOrder)
+      toSort(sortingBy,order)
       
-      toSort(sortBy,order)
     } else{
       setSortingBy(sortBy)
       toSort(sortBy,'Descending')
@@ -52,18 +44,20 @@ function SearchBar({APICall, toSort}){
     <div className= 'searchBar'>
       <div className='logo'>
         <div></div>
+        <span>Swa</span>
       </div>
       <div className='inputBox'>
         <input type='text'
+        value={value}
         onChange={e=> setValue(e.target.value)}></input>
       </div>
-      <div className='btn' onClick={APICall} value={value}>Search</div>
+      <div className='btn' onClick={()=>APICall(value,"search")} value={value}>Search</div>
       <div ref={node} className='dropDownDiv'>
         <div className='btn'>{sort}</div>
         <div className={` ${toShow? 'display-flex':'hide' } `}>
           <div className='options' >
-            <div onClick={(event)=>ArraySort('Title',event)}>Title</div>
-            <div onClick={(event)=>ArraySort('Year',event)}>Release</div>
+            <div id='Title' onClick={(event)=>ArraySort('Title',event)}>Title</div>
+            <div id='Year' onClick={(event)=>ArraySort('Year',event)}>Release</div>
           </div>
         </div>
       </div>

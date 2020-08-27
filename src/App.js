@@ -9,7 +9,6 @@ import { useGET } from './fetch/useGET'
 function App () {
   const [url, setURL] = useState('')
   const [isLoading, SetLoading] = useState(false)
-  const [isPagination, setPagination] = useState(false)
   const [isDetail, setPopup] = useState(false)
   const [searchData, setSearchData] = useState('')
   const [pageCount, setCount] = useState(1)
@@ -17,7 +16,7 @@ function App () {
   const [movieListData, setMovieList] = useState('')
 
   /****** Custom hook to hit the API *******/
-  const [movieList, movieDetail, error] = useGET(url, isPagination, isDetail, pageCount, movieId)
+  const [movieList, movieDetail, error] = useGET(url, isDetail, pageCount, movieId)
 
   useEffect(()=>{
     setMovieList(movieList)
@@ -28,15 +27,14 @@ function App () {
   useEffect(()=>{
     window.addEventListener('scroll', handleScroll);
       return () => window.removeEventListener('scroll', handleScroll);
-  },[])
 
-  /* To Increment the page count value by one when it reaches the bottom */
-  function handleScroll(){
-    if (window.innerHeight + document.documentElement.scrollTop >= document.documentElement.offsetHeight-10 && !isLoading ){
-      setPagination(true)
-      setCount(pageCount=> parseInt(pageCount)+1)
-    }
-  }
+    /* To Increment the page count value by one when it reaches the bottom */
+      function handleScroll(){
+        if (window.innerHeight + document.documentElement.scrollTop >= document.documentElement.offsetHeight-10 && !isLoading ){
+          setCount(pageCount=> parseInt(pageCount)+1)
+        }
+      }
+  },[isLoading])
 
 /******  Update the URL to trigger the API call 
  * When 
@@ -56,18 +54,23 @@ function App () {
   },[searchData, pageCount, movieId, isDetail])
 
 /** To update the search input and invoke the popup for movie detail by updating the movie id value*/ 
-  function APICall(e) {
-    if(e !== undefined && e.currentTarget !== undefined){
-      let value = e.currentTarget.getAttribute('value')
-      setPagination(false)
-      setSearchData(value)
-      document.body.style.overflow = 'unset';
-      setCount(pageCount=> 1)
-    }else if(typeof(e) === 'string'){
-      setMovieId(e)
-      setPopup(true)
-      document.body.style.overflow = 'hidden';
+  function APICall(value, component) {
+    switch (component){
+      case "search":
+        setSearchData(value)
+        document.body.style.overflow = 'unset';
+        setCount(pageCount=> 1)
+        break;
+      case "movieId":
+        setMovieId(value)
+        setPopup(true)
+        document.body.style.overflow = 'hidden';
+        break;
+      default:
+        break;
     }
+
+
   }
   
 /* To close the movie detail popup */

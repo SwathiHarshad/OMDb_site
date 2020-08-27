@@ -1,10 +1,21 @@
 import { useState, useEffect } from "react";
 
-export function useGET (url,isPagination, isDetail, pageCount, movieId) {
+export function useGET (url, isDetail, pageCount, movieId) {
   
   const [movieList, setList] = useState('')
   const [movieDetail, setDetail] = useState('')
   const [error, errorHandling] = useState('')
+  const [isPagination, setPagination] = useState(false)
+
+  useEffect(()=>{
+    if(pageCount !== 1){
+      setPagination(true)
+    }else{
+      setPagination(false)
+      setList('')
+    }
+  },[pageCount])
+
 
   useEffect(()=>{
     setDetail('')
@@ -25,26 +36,18 @@ export function useGET (url,isPagination, isDetail, pageCount, movieId) {
 
   function updateDataFromResponse(response){
     if(response.Error === undefined){
-      if(isPagination && typeof(response.Search) === 'object'){
+      if(isPagination){
         let data = [...movieList, ...response.Search]
         setList(data)
       }else if(isDetail === true){
         setDetail(response)
       } else {
-        if(pageCount === 1){
-          setList('')
-        }  
         setList(response.Search)
       }
     } else{
       errorHandling(response.Error)
-      if(pageCount === 1){
-        setList('')
-      }
     }
-    console.log('useGET : ',pageCount, movieList)
   }
-  
   
   return [movieList, movieDetail, error];
   
