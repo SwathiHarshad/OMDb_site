@@ -1,5 +1,296 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`<MovieDetail /> component render  1`] = `
+Array [
+  <div
+    className="poster display-flex"
+    onClick={[Function]}
+  >
+    <img
+      alt="James Bond 007: Everything or Nothing"
+      className="imageCSS"
+      src="https://m.media-amazon.com/images/M/MV5BMTk2MDYwMDU1Nl5BMl5BanBnXkFtZTgwNTM2NTQ3MDE@._V1_SX300.jpg"
+    />
+    <div
+      className="display-flex imgDes"
+    >
+      <div>
+        James Bond 007: Everything or Nothing
+      </div>
+      <div>
+        <span>
+          (
+        </span>
+        2003
+        <span>
+          )
+        </span>
+      </div>
+      <div
+        className="Icon navigationIcon"
+      />
+    </div>
+  </div>,
+  <div
+    className="poster display-flex"
+    onClick={[Function]}
+  >
+    <ErrorHandling
+      Error="Poster not available"
+    />
+    <div
+      className="display-flex imgDes"
+    >
+      <div>
+        James Bond 007: Blood Stone
+      </div>
+      <div>
+        <span>
+          (
+        </span>
+        2010
+        <span>
+          )
+        </span>
+      </div>
+      <div
+        className="Icon navigationIcon"
+      />
+    </div>
+  </div>,
+  <div
+    className="poster display-flex"
+    onClick={[Function]}
+  >
+    <img
+      alt="Jatt James Bond"
+      className="imageCSS"
+      src="https://m.media-amazon.com/images/M/MV5BOWVmNjQ2YmYtY2M4ZS00NDdkLTljZmUtYTZkNmNjM2FhMWU3XkEyXkFqcGdeQXVyNjQ2MjQ5NzM@._V1_SX300.jpg"
+    />
+    <div
+      className="display-flex imgDes"
+    >
+      <div>
+        Jatt James Bond
+      </div>
+      <div>
+        <span>
+          (
+        </span>
+        2014
+        <span>
+          )
+        </span>
+      </div>
+      <div
+        className="Icon navigationIcon"
+      />
+    </div>
+  </div>,
+  <div
+    className="poster display-flex"
+    onClick={[Function]}
+  >
+    <img
+      alt="James Bond 007: Goldfinger"
+      className="imageCSS"
+      src="https://m.media-amazon.com/images/M/MV5BZTM4N2I0NWYtNWUyYS00NjkzLWIwNWMtOGU1MWZmYWM5MzRkXkEyXkFqcGdeQXVyNzg5OTk2OA@@._V1_SX300.jpg"
+    />
+    <div
+      className="display-flex imgDes"
+    >
+      <div>
+        James Bond 007: Goldfinger
+      </div>
+      <div>
+        <span>
+          (
+        </span>
+        1986
+        <span>
+          )
+        </span>
+      </div>
+      <div
+        className="Icon navigationIcon"
+      />
+    </div>
+  </div>,
+  <div
+    className="poster display-flex"
+    onClick={[Function]}
+  >
+    <img
+      alt="James Bond Jr."
+      className="imageCSS"
+      src="https://m.media-amazon.com/images/M/MV5BMTQ2NjkzNTA1N15BMl5BanBnXkFtZTcwMzM1Mjg4NA@@._V1_SX300.jpg"
+    />
+    <div
+      className="display-flex imgDes"
+    >
+      <div>
+        James Bond Jr.
+      </div>
+      <div>
+        <span>
+          (
+        </span>
+        1991–1992
+        <span>
+          )
+        </span>
+      </div>
+      <div
+        className="Icon navigationIcon"
+      />
+    </div>
+  </div>,
+  <div
+    className="poster display-flex"
+    onClick={[Function]}
+  >
+    <img
+      alt="The James Bond Story"
+      className="imageCSS"
+      src="https://m.media-amazon.com/images/M/MV5BMTg1ODc0MjkzMF5BMl5BanBnXkFtZTcwMDY2NzEyMQ@@._V1_SX300.jpg"
+    />
+    <div
+      className="display-flex imgDes"
+    >
+      <div>
+        The James Bond Story
+      </div>
+      <div>
+        <span>
+          (
+        </span>
+        1999
+        <span>
+          )
+        </span>
+      </div>
+      <div
+        className="Icon navigationIcon"
+      />
+    </div>
+  </div>,
+  <div
+    className="poster display-flex"
+    onClick={[Function]}
+  >
+    <ErrorHandling
+      Error="Poster not available"
+    />
+    <div
+      className="display-flex imgDes"
+    >
+      <div>
+        James Bond in Agent Under Fire
+      </div>
+      <div>
+        <span>
+          (
+        </span>
+        2001
+        <span>
+          )
+        </span>
+      </div>
+      <div
+        className="Icon navigationIcon"
+      />
+    </div>
+  </div>,
+  <div
+    className="poster display-flex"
+    onClick={[Function]}
+  >
+    <img
+      alt="James Bond Supports International Women's Day"
+      className="imageCSS"
+      src="https://m.media-amazon.com/images/M/MV5BNmQ4OTlmNTUtMmQ1NC00YmI0LTgxYTItYjU5NjJkZjFkZTMyXkEyXkFqcGdeQXVyMjExMDE1MzQ@._V1_SX300.jpg"
+    />
+    <div
+      className="display-flex imgDes"
+    >
+      <div>
+        James Bond Supports International Women's Day
+      </div>
+      <div>
+        <span>
+          (
+        </span>
+        2011
+        <span>
+          )
+        </span>
+      </div>
+      <div
+        className="Icon navigationIcon"
+      />
+    </div>
+  </div>,
+  <div
+    className="poster display-flex"
+    onClick={[Function]}
+  >
+    <img
+      alt="James Bond"
+      className="imageCSS"
+      src="https://m.media-amazon.com/images/M/MV5BNWU3NzNhY2UtZDM0ZS00MmYwLWIxMDgtZGUwMzEwZDUyMGY3XkEyXkFqcGdeQXVyNjAzNzExNTk@._V1_SX300.jpg"
+    />
+    <div
+      className="display-flex imgDes"
+    >
+      <div>
+        James Bond
+      </div>
+      <div>
+        <span>
+          (
+        </span>
+        2015
+        <span>
+          )
+        </span>
+      </div>
+      <div
+        className="Icon navigationIcon"
+      />
+    </div>
+  </div>,
+  <div
+    className="poster display-flex"
+    onClick={[Function]}
+  >
+    <img
+      alt="Happy Anniversary 007: 25 Years of James Bond"
+      className="imageCSS"
+      src="https://m.media-amazon.com/images/M/MV5BNWE3NzFlZDItZTllNy00ZGE2LTgwMWYtZWI3ZGQyYjY4ZTNiXkEyXkFqcGdeQXVyMTY1MTcxMzc@._V1_SX300.jpg"
+    />
+    <div
+      className="display-flex imgDes"
+    >
+      <div>
+        Happy Anniversary 007: 25 Years of James Bond
+      </div>
+      <div>
+        <span>
+          (
+        </span>
+        1987
+        <span>
+          )
+        </span>
+      </div>
+      <div
+        className="Icon navigationIcon"
+      />
+    </div>
+  </div>,
+]
+`;
+
 exports[`<MovieList/> Component Testing To test movie list page 1`] = `
 Array [
   <div

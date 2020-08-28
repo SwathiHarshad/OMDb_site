@@ -1,22 +1,27 @@
 import React from "react";
 import ReactDOM, { render } from "react-dom";
-import App from "../App";
-import { MovieList } from "../mainContent/MovieList";
-import array from './array.json'
-import SearchBar from "../searchBarAndSorting/SearchBar";
-
 import { shallow, mount } from 'enzyme';
+
+import array from './array.json'
+import detail from './detail.json'
+import { MovieList } from "../mainContent/MovieList";
+import App from "../App";
+import SearchBar from "../searchBarAndSorting/SearchBar";
+import { MovieDetail } from "../mainContent/MovieDetail/MovieDetail";
 
 it("renders without crashing", () => {
   const div = document.createElement("div");
   ReactDOM.render(<App />, div);
   ReactDOM.unmountComponentAtNode(div);
 });
+
+/******** Mock function for spy as sortCall and APICall ********/
 const spy = jest.fn((key,order)=> 
   console.log('To sort Function Key value: ',key,' Order to sort :', order))
 const APICall = jest.fn((value, component)=>{
   console.log("API call were initiated search value:", value,' Component name: ', component)
 })
+
 /******** Movie List Component Testing ********/
 
 const movieListContainer = shallow(<MovieList Data = {array} APICall={APICall} />)
@@ -24,11 +29,10 @@ describe("<MovieList/> Component Testing",()=>{
   it("To test movie list page", ()=>{
     expect(movieListContainer.getElements()).toMatchSnapshot();
   });
-  // it('To check the movie onClick function', ()=>{
-    
-  //   movieListContainer.find('.imgDes').nodes[0].simulate("click")
-  //   console.log(APICall.mocks.calls.length)
-  // })
+  it('To check the movie onClick function', ()=>{
+    movieListContainer.find('.poster').first().props().onClick()
+    expect(APICall).toHaveBeenCalled()
+  })
 })
 
 
@@ -64,7 +68,14 @@ describe("<searchBar/> to test search and sorting functionality",()=>{
     expect(searchBarContainer.find('input[type="text"]').prop('value')).toEqual('wanted');
     searchBarContainer.find('.btn').first().simulate("click")
     expect(APICall).toHaveBeenCalled()
-    expect(APICall.mock.calls[0][0]).toEqual('wanted')
+    expect(APICall.mock.calls[1][0]).toEqual('wanted')
   })
-
 })
+
+/****** <MovieDetail /> component render ******/
+// describe("<MovieDetail /> component render",()=>{
+//   const movieDetailContainer = shallow(<MovieDetail Detail={detail}/>)
+//   it("",()=>{
+//     expect(movieDetailContainer.getElements()).toMatchSnapshot();
+//   })
+// })
